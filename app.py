@@ -38,7 +38,7 @@ def aml():
         "Authorization":"Bearer " + api_key
     }
 
-    req = urllib.request.Request(url,data,headers)
+    req = urllib.request.Request(url,body,headers)
 
     htmlstr="<html><body>"
 
