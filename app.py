@@ -32,7 +32,7 @@ def aml():
 
         }
     }
-    
+    return data
     body=str.encode(json.dumps(data))
     url='http://77efcf34-05ee-46a8-80e6-2a68fdc8e7a8.eastasia.azurecontainer.io/score'
     api_key='GKyjGkdxUchwKxkVWXb0SE6LUekM2FqB'
@@ -49,7 +49,6 @@ def aml():
     try:
         response = urllib.request.urlopen(req)
         result = json.loads(response.read())
-        return result
         htmlstr=htmlstr+"依據您輸入的參數資料，經過決策模型比對，診斷糖尿病的結果為"
 
         if str(result['Results']['WebServiceOutput0'][0]['Scored Labels']) =='1.0':
