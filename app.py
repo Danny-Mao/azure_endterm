@@ -64,7 +64,7 @@ def aml():
         print("The request failed with status  code:" + str(error.code))
         htmlstr+= '</body></html>'
 
-    #return htmlstr
+    return htmlstr
 
 
 @app.route('/about')
