@@ -15,13 +15,13 @@ def aml():
           {
               "Column1": 5,
               "SeriousDlqin2yrs": 0,
-              "RevolvingUtilizationOfUnsecuredLines": 0.9072394,
+              "RevolvingUtilizationOfUnsecuredLines": request.values["rev"],
               "age": 49,
               "NumberOfTime30-59DaysPastDueNotWorse": 1,
-              "DebtRatio": 0.024925695,
-              "MonthlyIncome": "63588",
+              "DebtRatio": request.values["deb"],
+              "MonthlyIncome": request.values["mon"],
               "NumberOfOpenCreditLinesAndLoans": 7,
-              "NumberOfTimes90DaysLate": 0,
+              "NumberOfTimes90DaysLate": request.values["num"],
               "NumberRealEstateLoansOrLines": 1,
               "NumberOfTime60-89DaysPastDueNotWorse": 0,
               "NumberOfDependents": "0"
@@ -32,8 +32,7 @@ def aml():
 
       }
     }
-    return str(data)
-    '''
+    
     body=str.encode(json.dumps(data))
     url='http://7ac69e26-f176-43dc-b695-668fd9800c4b.eastasia.azurecontainer.io/score'
     api_key='vtGt7uknpxFHb8P40n1AimaYMFvP2wdy'
@@ -46,6 +45,7 @@ def aml():
     req = urllib.request.Request(url,body,headers)
 
     htmlstr="<html><body>"
+    '''
 
     try:
         response = urllib.request.urlopen(req)
