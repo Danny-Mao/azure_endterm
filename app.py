@@ -50,13 +50,15 @@ def aml():
     try:
         response = urllib.request.urlopen(req)
         result = json.loads(response.read())
-        return result
-        htmlstr=htmlstr+"依據您輸入的參數資料，經過決策模型比對，診斷糖尿病的結果為"
-
+        htmlstr += result
+        htmlstr=htmlstr+"<p>依據您輸入的參數資料，經過決策模型比對：</p>"
+        htmlstr += "違約風險類別為 "
+        '''
         if str(result['Results']['WebServiceOutput0'][0]['Scored Labels']) =='1.0':
             htmlstr+= ' 陽性</body></html>'
         else:
             htmlstr+= ' 陰性</body></html>'
+        '''
 
     except urllib.error.HTTPError as error:
         print("The request failed with status  code:" + str(error.code))
