@@ -1,6 +1,7 @@
 from flask import Flask, request, render_template
 import urllib
 import json
+import math
 
 app = Flask(__name__)
 @app.route('/')
@@ -16,12 +17,12 @@ def aml():
                     "Column1": 5,
                     "SeriousDlqin2yrs": 0,
                     "RevolvingUtilizationOfUnsecuredLines": 3,
-                    "age": int(request.values["age"]),
+                    "age": math.floor(request.values["age"]),
                     "NumberOfTime30-59DaysPastDueNotWorse": 1,
                     "DebtRatio": float(request.values["deb"]),
                     "MonthlyIncome": str(request.values["mon"]),
                     "NumberOfOpenCreditLinesAndLoans": 7,
-                    "NumberOfTimes90DaysLate": int(request.values["num"]),
+                    "NumberOfTimes90DaysLate": math.floor(request.values["num"]),
                     "NumberRealEstateLoansOrLines": 1,
                     "NumberOfTime60-89DaysPastDueNotWorse": 0,
                     "NumberOfDependents": "0"
