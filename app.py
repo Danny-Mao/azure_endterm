@@ -57,7 +57,7 @@ def aml():
         if str(result['Results']['WebServiceOutput0'][0]['Scored Labels']) =='1.0':
             htmlstr+= ' 陽性</body></html>'
         else:
-            htmlstr+= ' 陰性</body></html>'
+            htmlstr+= ' 陰性</body></html>' 
         '''
 
     except urllib.error.HTTPError as error:
