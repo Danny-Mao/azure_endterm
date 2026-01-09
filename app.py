@@ -50,7 +50,7 @@ def aml():
     try:
         response = urllib.request.urlopen(req)
         result = json.loads(response.read())
-        htmlstr += result
+        htmlstr += str(result)
         htmlstr=htmlstr+"<p>依據您輸入的參數資料，經過決策模型比對：</p>"
         htmlstr += "違約風險類別為 "
         '''
