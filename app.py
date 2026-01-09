@@ -15,8 +15,8 @@ def aml():
                 {
                     "Column1": 5,
                     "SeriousDlqin2yrs": 0,
-                    "RevolvingUtilizationOfUnsecuredLines": request.values["rev"],
-                    "age": 49,
+                    "RevolvingUtilizationOfUnsecuredLines": 3,
+                    "age": request.values["age"],
                     "NumberOfTime30-59DaysPastDueNotWorse": 1,
                     "DebtRatio": request.values["deb"],
                     "MonthlyIncome": request.values["mon"],
