@@ -10,25 +10,30 @@ def home():
 @app.route('/aml', methods=['GET','POST'])
 def aml():
     data = {
-        "Inputs": {
-          "input1": [
-            {
-              "Pregnancies": 0,
-              "Glucose": request.values['p5'],
-              "BloodPressure": request.values['p4'],
-              "SkinThickness": 35,
-              "Insulin": request.values['p6'],
-              "BMI": request.values['p3'],
-              "DiabetesPedigreeFunction": 2.288,
-              "Age": request.values['p1'],
-              "Outcome": 1
-            }
-          ]
-        },
-        "GlobalParameters": {
+      "Inputs": {
+        "input1": [
+          {
+              "Column1": 5,
+              "SeriousDlqin2yrs": 0,
+              "RevolvingUtilizationOfUnsecuredLines": 0.9072394,
+              "age": 49,
+              "NumberOfTime30-59DaysPastDueNotWorse": 1,
+              "DebtRatio": 0.024925695,
+              "MonthlyIncome": "63588",
+              "NumberOfOpenCreditLinesAndLoans": 7,
+              "NumberOfTimes90DaysLate": 0,
+              "NumberRealEstateLoansOrLines": 1,
+              "NumberOfTime60-89DaysPastDueNotWorse": 0,
+              "NumberOfDependents": "0"
+          }
+        ]
+      },
+      "GlobalParameters": {
 
-        }
       }
+    }
+    return str(data)
+    '''
     body=str.encode(json.dumps(data))
     url='http://7ac69e26-f176-43dc-b695-668fd9800c4b.eastasia.azurecontainer.io/score'
     api_key='vtGt7uknpxFHb8P40n1AimaYMFvP2wdy'
@@ -57,6 +62,7 @@ def aml():
         htmlstr+= '</body></html>'
 
     return htmlstr
+    '''
 
 
 @app.route('/about')
