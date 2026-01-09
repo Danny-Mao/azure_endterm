@@ -10,32 +10,32 @@ def home():
 @app.route('/aml', methods=['GET','POST'])
 def aml():
     data = {
-      "Inputs": {
-        "input1": [
-          {
-              "Column1": 5,
-              "SeriousDlqin2yrs": 0,
-              "RevolvingUtilizationOfUnsecuredLines": request.values["rev"],
-              "age": 49,
-              "NumberOfTime30-59DaysPastDueNotWorse": 1,
-              "DebtRatio": request.values["deb"],
-              "MonthlyIncome": request.values["mon"],
-              "NumberOfOpenCreditLinesAndLoans": 7,
-              "NumberOfTimes90DaysLate": request.values["num"],
-              "NumberRealEstateLoansOrLines": 1,
-              "NumberOfTime60-89DaysPastDueNotWorse": 0,
-              "NumberOfDependents": "0"
-          }
-        ]
-      },
-      "GlobalParameters": {
+        "Inputs": {
+            "input1": [
+                {
+                    "Column1": 5,
+                    "SeriousDlqin2yrs": 0,
+                    "RevolvingUtilizationOfUnsecuredLines": request.values["rev"],
+                    "age": 49,
+                    "NumberOfTime30-59DaysPastDueNotWorse": 1,
+                    "DebtRatio": request.values["deb"],
+                    "MonthlyIncome": request.values["mon"],
+                    "NumberOfOpenCreditLinesAndLoans": 7,
+                    "NumberOfTimes90DaysLate": request.values["num"],
+                    "NumberRealEstateLoansOrLines": 1,
+                    "NumberOfTime60-89DaysPastDueNotWorse": 0,
+                    "NumberOfDependents": "0"
+                }
+            ]
+        },
+        "GlobalParameters": {
 
-      }
+        }
     }
     
     body=str.encode(json.dumps(data))
-    url='http://7ac69e26-f176-43dc-b695-668fd9800c4b.eastasia.azurecontainer.io/score'
-    api_key='vtGt7uknpxFHb8P40n1AimaYMFvP2wdy'
+    url='http://77efcf34-05ee-46a8-80e6-2a68fdc8e7a8.eastasia.azurecontainer.io/score'
+    api_key='GKyjGkdxUchwKxkVWXb0SE6LUekM2FqB'
     headers = {
         "Content-Type":"application/json",
         "Accept":"application/json",
@@ -45,11 +45,11 @@ def aml():
     req = urllib.request.Request(url,body,headers)
 
     htmlstr="<html><body>"
-    '''
 
     try:
         response = urllib.request.urlopen(req)
         result = json.loads(response.read())
+        return result
         htmlstr=htmlstr+"依據您輸入的參數資料，經過決策模型比對，診斷糖尿病的結果為"
 
         if str(result['Results']['WebServiceOutput0'][0]['Scored Labels']) =='1.0':
@@ -61,8 +61,7 @@ def aml():
         print("The request failed with status  code:" + str(error.code))
         htmlstr+= '</body></html>'
 
-    return htmlstr
-    '''
+    #return htmlstr
 
 
 @app.route('/about')
